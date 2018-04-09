@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <script type="text/javascript">
+    //开始画图，添加围栏
+    function addPolygon() {
+      var ifr = document.getElementById('iframeRight');
+      var targetOrigin = '*';
+      var func = { name: "addPolygon" };//传输name名称
+      var str = JSON.stringify(func); //将json对象 转成json字符串
+      ifr.contentWindow.postMessage(str, targetOrigin);
+    }
+
+
+    //重新画图
+    function editPolygon() {
+      var ifr = document.getElementById('iframeRight');
+      var targetOrigin = '*';
+      var func = { name: "iPloygonEdit" };//传输name名称
+      var str = JSON.stringify(func); //将json对象 转成json字符串
+      ifr.contentWindow.postMessage(str, targetOrigin);
+    }
+  </script>
+</head>
+<body>
+
+<div style="float:left;height:500px;width:100px;">
+  <input type="button" value="开始画图" onclick="addPolygon()" />
+  <input type="button" value="重新画图" onclick="editPolygon()" />
+</div>
+<div style="float:left;height:500px;width:800px;">
+  <iframe name="iframeRight" id="iframeRight" style="width:100%;height:500px; border:1px solid #ff6a00;" src="bbb.html"></iframe>
+</div>
+</body>
+</html>

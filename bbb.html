@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <script type="text/javascript">
+    if (window.attachEvent) {
+      window.attachEvent('onmessage', function (event) {
+
+        var getData = JSON.parse(event.data);
+        //将接收的json字符串 转成对象
+        // 通过origin属性判断消息来源地址
+        if (getData.name == "addPolygon") {
+          alert("addPolygon");
+        }
+        if (getData.name == "iPloygonEdit") {
+          alert("iPloygonEdit");
+        }
+      });
+    } else {
+      window.onmessage = function (event) { //注册message事件
+
+        var getData = JSON.parse(event.data); //将接收的json字符串 转成对象
+        if (getData.name == "addPolygon") {
+          alert("addPolygon");
+        }
+        if (getData.name == "iPloygonEdit") {
+          alert("iPloygonEdit");
+        }
+      }
+    }
+
+  </script>
+
+
+</head>
+<body>
+这是B页面
+</body>
+</html>
