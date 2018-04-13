@@ -15,12 +15,13 @@ export default class extends Component<Props> {
     }
   }
   _onPressButton() {
+    // 返回首页
     this.props.navigation.goBack()
+    // 打开抽屉
     this.props.navigation.navigate('DrawerOpen')
   }
-
   static navigationOptions = {
-    drawerLabel: 'Userfffffffffffffff',
+    drawerLabel: 'System',
     drawerIcon: ({ tintColor }) => (
       <Icon name="bars" size={30} color="#900" />
     ),
@@ -30,26 +31,17 @@ export default class extends Component<Props> {
     const itemId = params ? params.itemId : null;
     const otherParam = params ? params.otherParam : null;
 
-
-    let navigationView = (
-      <View style={{flex: 1, backgroundColor: '#fff'}}>
-        <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>I'm in the Drawer!</Text>
-      </View>
-    );
-
-
-
     return (
     <ImageBackground style={{height,width}} source={require('../../../assets/images/bg.jpg')} resizeMode='cover'>
       <View style={styles.container}>
 
         <Text style={styles.welcome}>
-          设置页面
+          用户注册
         </Text>
-
         <TouchableHighlight style={styles.button} onPress={() => this._onPressButton()}>
           <Text>返回</Text>
         </TouchableHighlight>
+
       </View>
     </ImageBackground>
     );

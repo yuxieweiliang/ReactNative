@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
-import { Text, TouchableHighlight,StatusBar, View, Button, TouchableNativeFeedback } from 'react-native';
+import { Text, TouchableHighlight, WebView, View, ScrollView, Button, Dimensions } from 'react-native';
 import styles from './style'
 import Swiper from 'react-native-swiper';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+const { width, height } = Dimensions.get('window');
+import TabCardView from '../../../../components/TabCardView'
+import { connect } from 'react-redux'
+import at from './action'
 
 
-export default class extends React.Component {
+class HomePage extends React.Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
-    console.log(navigation)
     return {
       title: '首页',
     }
   };
 
+  componentWillMount() {
+    const { dispatch } = this.props
+    dispatch(at.login())
+  }
   componentDidMount() {
 
   }
@@ -28,25 +35,42 @@ export default class extends React.Component {
     // this._onPressButton.remove();
   }
   render() {
+    const { tabCardData }= this.props
+    const tabItemStyle= {backgroundColor: 'red', width, height: 200}
+
     return (
 
-      <View style={styles.slide1}>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>这里是首页</Text>
-          <Button
-            title="Go to Details"
-            onPress={() => this.props.navigation.navigate('User', {
-              itemId: 86,
-              otherParam: 'anything you want here',
-            })}
-          />
+      <ScrollView style={styles.slide1}>
+
+        <WebView
+          automaticallyAdjustContentInsets={false}
+          style={{width, height: 300, }}
+          source={{uri: 'https://www.baidu.com/'}}
+          javaScriptEnabled={true}
+          domStorageEnabled={true}
+          decelerationRate="normal"
+          startInLoadingState={true}
+        />
+        <View style={{ flex: 1 }}>
+
+          <TabCardView {...tabCardData}>
+            <View style={tabItemStyle}><Text>one</Text></View>
+            <View style={tabItemStyle}><Text>one</Text></View>
+            <View style={tabItemStyle}><Text>one</Text></View>
+            <View style={tabItemStyle}><Text>one</Text></View>
+          </TabCardView>
 
         </View>
-      </View>
-
-
+      </ScrollView>
 
     );
   }
 }
 
+
+const createState = function(state) {
+  console.log(state)
+  return ({...state.loginIn})
+}
+
+export default connect(createState)(HomePage)

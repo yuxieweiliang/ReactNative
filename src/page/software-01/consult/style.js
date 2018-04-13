@@ -8,9 +8,6 @@ export default StyleSheet.create({
   slide1: {
     width,
     height,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   slide2: {
     flex: 1,

@@ -47,7 +47,7 @@ export default {
     screen: UserScreen,
     navigationOptions: {
       ...config,
-      header: null
+      //header: null
     }
   },
 }

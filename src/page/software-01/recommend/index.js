@@ -8,7 +8,6 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 export default class extends React.Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
-    console.log(navigation)
     return {
       title: '推荐',
     }

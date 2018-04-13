@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 import ProductScreen from './product/index';
+import LoginScreen from '../setting/login/index';
 import Software from './software-01'
 
 const config = {
@@ -26,6 +27,12 @@ const  pageRoute = {
   Product: {
     screen: ProductScreen,
   },
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: {
+      header: null
+    },
+  },
 
 }
 
@@ -33,7 +40,7 @@ const  pageRoute = {
 const InitView = StackNavigator(
   pageRoute,
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'Login'
   }
 );
 export default InitView
